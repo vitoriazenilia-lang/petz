@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nav_dog"
+        android:title="Cachorros"
+        android:icon="@drawable/icdog"/>
+
+    <item android:id="@+id/nav_cat"
+        android:title="Gatos"
+        android:icon="@drawable/icccat"/>
+
+    <item android:id="@+id/nav_fish"
+        android:title="Peixes"
+        android:icon="@drawable/icfish"/>
+
+    <item android:id="@+id/nav_bird"
+        android:title="Passáros"
+        android:icon="@drawable/icbird"/>
+
+    <item android:id="@+id/nav_pets"
+        android:title="Outros Pets"
+        android:icon="@drawable/icfrog"/>
+
+    <item android:id="@+id/plants"
+        android:title="Casa e Jardim"
+        android:icon="@drawable/icplant"/>
+
+</menu>

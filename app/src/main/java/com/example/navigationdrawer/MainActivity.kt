@@ -2,9 +2,12 @@ package com.example.navigationdrawer
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.Gravity
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
@@ -15,6 +18,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.navigationdrawer.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import kotlin.text.replace
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -28,17 +33,26 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(binding.root)
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
-        WindowInsetsControllerCompat(window, window.decorView).hide(WindowInsetsCompat.Type.statusBars())
+        WindowInsetsControllerCompat(
+            window,
+            window.decorView
+        ).hide(WindowInsetsCompat.Type.statusBars())
 
         setSupportActionBar(binding.toolbar)
 
-        val toggle = ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.nav_open, R.nav_close)
+        val toggle = ActionBarDrawerToggle(
+            this,
+            binding.drawerLayout,
+            binding.toolbar,
+            R.string.nav_open,
+            R.string.nav_close
+        )
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
         binding.navigationDrawer.setNavigationItemSelectedListener(this)
 
-        binding.bottomAppbar.setOnItemSelectedListener { item ->
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
             when(item.itemId){
                 R.id.bottom_home -> openFragment(HomeFragment())
                 R.id.bottom_cart -> openFragment(CartFragment())
@@ -67,8 +81,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
     }
-
-    override fun onNavigationItemSelected(p0: MenuItem): Boolean {
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.nav_dog -> openFragment(DogFragment())
             R.id.nav_cat -> openFragment(CatFragment())
@@ -76,15 +89,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_fish -> Toast.makeText(this, "Peixe", Toast.LENGTH_SHORT).show()
             R.id.nav_pets -> Toast.makeText(this, "Pets", Toast.LENGTH_SHORT).show()
         }
-
         binding.drawerLayout.closeDrawer(GravityCompat.START)
-
         return true
     }
-
     private fun openFragment(fragment: Fragment){
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragment_container,fragment)
         fragmentTransaction.commit()
     }
-}
+
+
+
+
+    }
+

@@ -86,8 +86,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_dog -> openFragment(DogFragment())
             R.id.nav_cat -> openFragment(CatFragment())
             R.id.nav_bird -> openFragment(BirdFragment())
-            R.id.nav_fish -> Toast.makeText(this, "Peixe", Toast.LENGTH_SHORT).show()
-            R.id.nav_pets -> Toast.makeText(this, "Pets", Toast.LENGTH_SHORT).show()
+            R.id.nav_fish -> Toast.makeText(this, "Peixes", Toast.LENGTH_SHORT).show()
+            R.id.nav_pets -> Toast.makeText(this, "Outros Pets", Toast.LENGTH_SHORT).show()
+            R.id.plants -> Toast.makeText(this, "Casa e Jardim", Toast.LENGTH_SHORT).show()
         }
         binding.drawerLayout.closeDrawer(GravityCompat.START)
         return true
